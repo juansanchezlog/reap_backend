@@ -34,11 +34,10 @@ export const getForms = async (req: AuthRequest, res: Response): Promise<void> =
       }
     });
 
-    // Map the _count.submissions to responseCount for frontend compatibility
     const formsWithResponseCount = forms.map(form => ({
       ...form,
       responseCount: form._count.submissions,
-      _count: undefined // Remove the _count field
+      _count: undefined
     }));
 
     res.json(formsWithResponseCount);
